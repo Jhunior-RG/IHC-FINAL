@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -43,6 +43,7 @@
 }
 
 :root {
+  --font-croissant: "Croissant One", serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -52,11 +53,11 @@
   --popover-foreground: oklch(0.129 0.042 264.695);
   --primary: #265b8f;
   --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: #265b8f;
-  --muted: oklch(0.968 0.007 247.896);
+  --secondary: #DF831E;
+  --secondary-foreground: #fff;
+  --muted: #DF831E;
   --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
+  --accent: #DF831E;
   --accent-foreground: #265b8f;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
@@ -71,7 +72,7 @@
   --sidebar-foreground: oklch(0.129 0.042 264.695);
   --sidebar-primary: #265b8f;
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent: #DF831E;
   --sidebar-accent-foreground: #265b8f;
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
