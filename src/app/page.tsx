@@ -1,3 +1,5 @@
+"use client";
+import SectionDiscountedProducts from "@/components/SectionDiscountedProducts";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -5,7 +7,7 @@ const Page = () => {
     return (
         <>
             <div className="bg-primary">
-                <div className="  h-120 flex justify-center">
+                <div className=" h-120 flex sm:flex-row flex-col-reverse justify-center">
                     <div className="relative h-full w-full">
                         <Image
                             className="absolute top-0 left-0"
@@ -23,7 +25,7 @@ const Page = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col items-center justify-center gap-2 w-full">
+                    <div className="flex flex-col items-center justify-center gap-2 w-full z-50">
                         <div className="flex items-center justify-center gap-2 w-full">
                             <Image
                                 src="/logoWhite.png"
@@ -50,6 +52,7 @@ const Page = () => {
                     </div>
                 </div>
             </div>
+            <SectionDiscountedProducts />
         </>
     );
 };
