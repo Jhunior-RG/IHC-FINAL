@@ -2,6 +2,13 @@
 import type { Product } from "./CardProduct";
 import CardProduct from "./CardProduct";
 import { Button } from "./ui/button";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "./ui/carousel";
 const products: Product[] = [
     {
         id: 1,
@@ -55,11 +62,17 @@ const SectionDiscountedProducts = () => {
                     Ver más
                 </Button>
             </div>
-            <div className="flex gap-5 overflow-auto">
-                {products.map((product) => (
-                    <CardProduct key={product.id} product={product} />
-                ))}
-            </div>
+            <Carousel className="">
+                <CarouselContent>
+                    {products.map((product) => (
+                        <CarouselItem key={product.id} className="basis-1/2 md:basis-1/5 m-3">
+                            <CardProduct key={product.id} product={product} />
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
         </div>
     );
 };

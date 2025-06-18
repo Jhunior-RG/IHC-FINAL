@@ -23,7 +23,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <div className="flex items-end h-full text-white gap-4 ">
+                <div className="flex items-end h-full text-white gap-4 pr-3">
                     <Image
                         src={"/facebook.png"}
                         alt="facebook"
