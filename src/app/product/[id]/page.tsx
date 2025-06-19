@@ -41,7 +41,7 @@ const page = () => {
                             <Badge key={tag}>{tag}</Badge>
                         ))}
                     </div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-4">
                         <div>
                             <p className="text-2xl font-bold">
                                 Bs. {product.price}
@@ -206,7 +206,7 @@ const page = () => {
                     value="similar"
                     className="border-2 rounded-b-4xl rounded-r-4xl p-5"
                 >
-                    Change y our password here.
+                 
                 </TabsContent>
                 <TabsContent
                     value="reviews"
