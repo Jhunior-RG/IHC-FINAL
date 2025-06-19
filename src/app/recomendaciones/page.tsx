@@ -234,19 +234,21 @@ const Step1 = ({
     const [peso, setPeso] = useState("");
 
     const handleConfirm = () => {
-        // Filtrar productos según los criterios seleccionados
+        // Calcular score de coincidencias para cada producto
         const productosCompletos = baseProducts.map(completarProducto);
-        const filtrados = productosCompletos.filter((p) => {
-            if (selected && p.especie !== "ambos" && p.especie !== selected)
-                return false;
-            if (raza && p.razas && !p.razas.includes(raza)) return false;
-            if (edad && p.edades && !p.edades.includes(edad)) return false;
-            if (tamano && p.tamanos && !p.tamanos.includes(tamano))
-                return false;
-            if (peso && p.pesos && !p.pesos.includes(peso)) return false;
-            return true;
+        const productosConScore = productosCompletos.map((p) => {
+            let score = 0;
+            if (selected && (p.especie === "ambos" || p.especie === selected))
+                score++;
+            if (raza && p.razas && p.razas.includes(raza)) score++;
+            if (edad && p.edades && p.edades.includes(edad)) score++;
+            if (tamano && p.tamanos && p.tamanos.includes(tamano)) score++;
+            if (peso && p.pesos && p.pesos.includes(peso)) score++;
+            return { ...p, score };
         });
-        onRecommend(filtrados as ProductRecomendado[]);
+        // Ordenar por score descendente
+        const ordenados = productosConScore.sort((a, b) => b.score - a.score);
+        onRecommend(ordenados as ProductRecomendado[]);
         setSelectedTags({ raza, edad, tamano, peso });
     };
 

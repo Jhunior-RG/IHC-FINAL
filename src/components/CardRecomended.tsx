@@ -80,30 +80,33 @@ const CardRecomended = ({ product, filterTags }: CardRecomendedProps) => {
                     <p>{product.price}</p>
                     {checks.length > 0 && (
                         <div className="flex gap-2 flex-wrap mt-2">
-                            {checks.map(
-                                (item) =>
-                                    item.value && (
-                                        <Badge
-                                            key={item.label} 
-                                            className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium
-                                                ${
-                                                    item.match
-                                                        ? "bg-neutral-800 text-white"
-                                                        : "bg-neutral-100 border border-neutral-800 text-neutral-800"
-                                                }
-                                            `}
-                                        >
-                                            {item.match ? (
-                                                <Check
-                                                    className="mr-1"
-                                                />
-                                            ) : (
-                                                <X className="mr-1" />
-                                            )}
-                                            {item.label}: {item.value}
-                                        </Badge>
-                                    )
-                            )}
+                            {checks
+                                .slice()
+                                .sort((a, b) =>
+                                    a.match === b.match ? 0 : a.match ? -1 : 1
+                                )
+                                .map((item) => (
+                                    <Badge
+                                        key={item.label}
+                                        className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium
+                                            ${
+                                                item.match
+                                                    ? "bg-neutral-800 text-white"
+                                                    : "bg-neutral-100 border border-neutral-800 text-neutral-800"
+                                            }
+                                        `}
+                                    >
+                                        {item.match ? (
+                                            <Check className="mr-1" />
+                                        ) : (
+                                            <X className="mr-1" />
+                                        )}
+                                        {item.label}:{" "}
+                                        {item.value
+                                            ? item.value
+                                            : "No especificado"}
+                                    </Badge>
+                                ))}
                         </div>
                     )}
                 </div>
