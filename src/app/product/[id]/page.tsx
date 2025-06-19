@@ -34,6 +34,7 @@ const page = () => {
         const reviewsData = await reviews.json();
         setReviews(reviewsData);
     };
+    const [cantidad, setCantidad] = useState<number>(1);
     useEffect(() => {
         getReviews();
     }, []);
@@ -71,9 +72,19 @@ const page = () => {
                                 <Input
                                     type="number"
                                     min={1}
-                                    defaultValue={1}
+                                    onChange={(e) =>
+                                        setCantidad(Number(e.target.value))
+                                    }
+                                    value={cantidad}
                                     max={product.stock}
                                 />
+                                <p className="text-sm font-semibold">
+                                    Total:{" "}
+                                    <span className="text-secondary">
+                                        Bs. {cantidad * product.price}
+                                    </span>
+                                </p>
+
                                 <ButtonAddShoppingCart />
                             </CardContent>
                         </Card>
@@ -229,9 +240,9 @@ const page = () => {
                             <Button
                                 className={`${
                                     sort === "latest"
-                                        ? "bg-primary text-white"
+                                        ? "bg-secondary hover:bg-secondary/80  text-white"
                                         : "bg-gray-200 text-black hover:bg-gray-300"
-                                }`} 
+                                }`}
                                 onClick={() => setSort("latest")}
                             >
                                 Más Recientes Primero <ArrowDown />
@@ -239,7 +250,7 @@ const page = () => {
                             <Button
                                 className={`${
                                     sort === "best"
-                                        ? "bg-primary text-white"
+                                        ? "bg-secondary hover:bg-secondary/80  text-white"
                                         : "bg-gray-200 text-black hover:bg-gray-300"
                                 }`}
                                 onClick={() => setSort("best")}
@@ -249,7 +260,7 @@ const page = () => {
                             <Button
                                 className={`${
                                     sort === "worst"
-                                        ? "bg-primary text-white"
+                                        ? "bg-secondary hover:bg-secondary/80  text-white"
                                         : "bg-gray-200 text-black hover:bg-gray-300"
                                 }`}
                                 onClick={() => setSort("worst")}
