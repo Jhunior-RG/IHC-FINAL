@@ -1,75 +1,7 @@
 import type { Product } from "../../components/horizontalCard"
 import CardProduct from "../../components/horizontalCard"
 import { Heart } from "lucide-react"
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Vital+ comida para perros sabor carne y vegetales 2kg",
-    price: 150,
-    priceDiscount: 120,
-    image: "/Vital+.png",
-    description:
-      "Alimento completo y balanceado para perros adultos, con delicioso sabor a carne y vegetales. Aporta energía, fortalece el sistema inmunológico y mejora el pelaje.",
-    tags: ["Perros adultos", "Pelaje saludable", "Energía", "Alimento balanceado"],
-    stock: 15,
-  },
-  {
-    id: 2,
-    name: "ZenCat comida para gatos sabor salmón 1.5kg",
-    price: 100,
-    priceDiscount: 80,
-    image: "/ZenCat.png",
-    description:
-      "Nutrición premium para gatos, rica en proteínas y omega 3 gracias al salmón. Promueve un sistema digestivo sano, pelaje brillante y defensas fuertes.",
-    tags: ["Gatos adultos", "Sabor salmón", "Pelaje brillante", "Salud digestiva"],
-    stock: 8,
-  },
-  {
-    id: 3,
-    name: "PawFuel Mature Raza Pequeña",
-    price: 200,
-    priceDiscount: 130,
-    image: "/Mature.png",
-    description:
-      "Especialmente formulado para perros de razas pequeñas en edad madura. Ayuda a mantener la movilidad articular, controla el peso y protege la salud cardíaca.",
-    tags: ["Raza pequeña", "Perros maduros", "Movilidad articular", "Control de peso"],
-    stock: 3,
-  },
-  {
-    id: 4,
-    name: "Vital+ comida para perros sabor carne y vegetales 2kg",
-    price: 150,
-    priceDiscount: 120,
-    image: "/Vital+.png",
-    description:
-      "Alimento completo y balanceado para perros adultos, con delicioso sabor a carne y vegetales. Aporta energía, fortalece el sistema inmunológico y mejora el pelaje.",
-    tags: ["Perros adultos", "Pelaje saludable", "Energía", "Alimento balanceado"],
-    stock: 12,
-  },
-  {
-    id: 5,
-    name: "ZenCat comida para gatos sabor salmón 1.5kg",
-    price: 100,
-    priceDiscount: 80,
-    image: "/ZenCat.png",
-    description:
-      "Nutrición premium para gatos, rica en proteínas y omega 3 gracias al salmón. Promueve un sistema digestivo sano, pelaje brillante y defensas fuertes.",
-    tags: ["Gatos adultos", "Sabor salmón", "Pelaje brillante", "Salud digestiva"],
-    stock: 0,
-  },
-  {
-    id: 6,
-    name: "PawFuel Mature Raza Pequeña",
-    price: 200,
-    priceDiscount: 130,
-    image: "/Mature.png",
-    description:
-      "Especialmente formulado para perros de razas pequeñas en edad madura. Ayuda a mantener la movilidad articular, controla el peso y protege la salud cardíaca.",
-    tags: ["Raza pequeña", "Perros maduros", "Movilidad articular", "Control de peso"],
-    stock: 7,
-  },
-]
+import { products } from "@/constant/products"
 
 const page = () => {
   return (

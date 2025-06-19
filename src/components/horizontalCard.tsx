@@ -46,6 +46,9 @@ const CardProduct = ({ product }: { product: Product }) => {
 
             <div className="flex-1 flex flex-col justify-between min-w-0">
               <div>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 line-clamp-1 mb-1">
+                  {product.name}
+                </h3>
                 {product.description && (
                   <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 mb-2">{product.description}</p>
                 )}
@@ -81,7 +84,7 @@ const CardProduct = ({ product }: { product: Product }) => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <ButtonAddShoppingCart  product={product}/>
+                  <ButtonAddShoppingCart product={product} />
                 </div>
               </div>
             </div>
