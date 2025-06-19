@@ -8,25 +8,25 @@ const Page = () => {
     return (
         <>
             <div className="bg-primary">
-                <div className=" h-120 flex sm:flex-row flex-col-reverse justify-center">
+                <div className=" h-172 flex sm:flex-row flex-col-reverse justify-center">
                     <div className="relative h-full w-full">
                         <Image
                             className="absolute top-0 left-0"
                             src="/cloud.png"
                             alt="PawFuel"
-                            width={500}
-                            height={0}
+                            width={700}
+                            height={500}
                         />
                         <Image
                             className="absolute mt-auto left-0 bottom-0"
                             src="/dog1.png"
                             alt="PawFuel"
-                            width={400}
-                            height={400}
+                            width={600}
+                            height={600}
                         />
                     </div>
 
-                    <div className="flex flex-col items-center justify-center gap-2 w-full ">
+                    <div className="flex flex-col items-center justify-center gap-2 w-full mr-10">
                         <div className="flex items-center justify-center gap-2 w-full">
                             <Image
                                 src="/logoWhite.png"
@@ -83,7 +83,7 @@ const Page = () => {
                     className="ml-auto object-contain w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[692.78px] h-auto"
                 />
             </div>
-            <div style={{ background: '#D5E5F4' }} className="m-0 p-0">
+            <div style={{ background: '#D5E5F4' }} className="m-0 p-0 h-172">
                 <SectionDiscountedProducts />
             </div>
 
