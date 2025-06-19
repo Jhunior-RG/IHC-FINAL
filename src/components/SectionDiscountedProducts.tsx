@@ -1,5 +1,5 @@
 "use client";
-import type { Product } from "./CardProduct";
+import { products } from "@/constant/products"; 
 import CardProduct from "./CardProduct";
 import { Button } from "./ui/button";
 import {
@@ -9,50 +9,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "./ui/carousel";
-const products: Product[] = [
-    {
-        id: 1,
-        name: "Vital+ comida para perros sabor carne y vegetales 2kg",
-        price: 150,
-        priceDiscount: 120,
-        image: "/Vital+.png",
-    },
-    {
-        id: 2,
-        name: "ZenCat comida para gatos sabor salmon 1.5kg",
-        price: 100,
-        priceDiscount: 80,
-        image: "/ZenCat.png",
-    },
-    {
-        id: 3,
-        name: "PawFuel Mature Raza Pequeña",
-        price: 200,
-        priceDiscount: 130,
-        image: "/Mature.png",
-    },
-    {
-        id: 4,
-        name: "Vital+ comida para perros sabor carne y vegetales 2kg",
-        price: 150,
-        priceDiscount: 120,
-        image: "/Vital+.png",
-    },
-    {
-        id: 5,
-        name: "ZenCat comida para gatos sabor salmon 1.5kg",
-        price: 100,
-        priceDiscount: 80,
-        image: "/ZenCat.png",
-    },
-    {
-        id: 6,
-        name: "PawFuel Mature Raza Pequeña",
-        price: 200,
-        priceDiscount: 130,
-        image: "/Mature.png",
-    },
-];
 const SectionDiscountedProducts = () => {
     return (
         <div style={{background: '#D5E5F4'}}className="w-4/5 mx-auto py-5 flex flex-col gap-5">

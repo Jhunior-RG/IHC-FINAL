@@ -1,5 +1,6 @@
 "use client";
 import ButtonAddShoppingCart from "@/components/ButtonAddShoppingCart";
+import { useParams } from "next/navigation";
 import type { Product } from "@/components/CardProduct";
 import Review, { type ReviewProps } from "@/components/review";
 import { Badge } from "@/components/ui/badge";
@@ -24,17 +25,22 @@ import { reviews } from "@/constant/reviews";
 const product: Product = products[0];
 
 const page = () => {
+    const { id } = useParams();
+    const productId = Number(id);
+    const product = products.find((p) => p.id === productId);
     const [sort, setSort] = useState<"latest" | "best" | "worst">("latest");
     const [rating, setRating] = useState<number>(0);
     const [review, setReview] = useState<string>("");
     const [cantidad, setCantidad] = useState<number>(1);
     const [reviewsList, setReviews] = useState(reviews);
-
+    if (!product) {
+        return <div className="text-center py-10">Producto no encontrado</div>;
+    }
     return (
         <div>
-            <div className="flex justify-center items-center gap-40 py-10 sm:max-w-4/5 mx-auto  ">
+            <div className="flex justify-center items-center gap-40 py-10 sm:max-w-4/5 mx-auto">
                 <Image
-                    className="h-full "
+                    className="h-full"
                     src={product.image}
                     alt={product.name}
                     width={200}
@@ -50,17 +56,14 @@ const page = () => {
                     </div>
                     <div className="flex justify-between items-center gap-4">
                         <div>
-                            <p className="text-2xl font-bold">
-                                Bs. {product.price}
-                            </p>
+                            <p className="text-2xl font-bold">Bs. {product.price}</p>
                             <p className="text-sm text-gray-500">
                                 {product.stock} en Stock
                             </p>
                         </div>
-
                         <Card className="w-[250px]">
                             <CardContent className="flex flex-col gap-2">
-                                <p className="font-semibold ">Cantidad</p>
+                                <p className="font-semibold">Cantidad</p>
                                 <Input
                                     type="number"
                                     min={1}
@@ -76,7 +79,6 @@ const page = () => {
                                         Bs. {cantidad * product.price}
                                     </span>
                                 </p>
-
                                 <ButtonAddShoppingCart />
                             </CardContent>
                         </Card>
@@ -310,31 +312,28 @@ const page = () => {
                     <div className="flex flex-col gap-4">
                         <div className="flex justify-between">
                             <Button
-                                className={`${
-                                    sort === "latest"
+                                className={`${sort === "latest"
                                         ? "bg-secondary hover:bg-secondary/80  text-white"
                                         : "bg-gray-200 text-black hover:bg-gray-300"
-                                }`}
+                                    }`}
                                 onClick={() => setSort("latest")}
                             >
                                 Más Recientes Primero <ArrowDown />
                             </Button>
                             <Button
-                                className={`${
-                                    sort === "best"
+                                className={`${sort === "best"
                                         ? "bg-secondary hover:bg-secondary/80  text-white"
                                         : "bg-gray-200 text-black hover:bg-gray-300"
-                                }`}
+                                    }`}
                                 onClick={() => setSort("best")}
                             >
                                 Mejores Primero <ArrowDown />
                             </Button>
                             <Button
-                                className={`${
-                                    sort === "worst"
+                                className={`${sort === "worst"
                                         ? "bg-secondary hover:bg-secondary/80  text-white"
                                         : "bg-gray-200 text-black hover:bg-gray-300"
-                                }`}
+                                    }`}
                                 onClick={() => setSort("worst")}
                             >
                                 Peores Primero <ArrowDown />

@@ -3,16 +3,16 @@ import type { Product } from "@/components/CardProduct";
 export const products: Product[] = [
     {
         "id": 1,
-        "name": "PowerBites Adulto",
+        "name": "Vital + comida para perros sabor carne y vegetales 2kg",
         "description": "Alimentos balanceados para perros adultos de todas las razas",
         "price": 100,
         "stock": 100,
         "tags": ["Mascotas", "Alimentos", "Perros", "Pequeños"],
-        "image": "/PowerBites.png"
+        "image": "/Vital+.png"
     },
     {
         "id": 2,
-        "name": "ZenCat",
+        "name": "ZenCat comida para gatos sabor salmon 1.5kg",
         "description": "ZenCat es un alimento balanceado para gatos adultos de todas las razas",
         "price": 100,
         "stock": 100,
@@ -20,18 +20,18 @@ export const products: Product[] = [
     },
     {
         "id": 3,
-        "name": "ZenCat",
-        "description": "Mature es un alimento balanceado para perros adultos de todas las razas",
+        "name": "PawFuel Mature Raza Pequeña",
+        "description": "PawFuel Mature es un alimento balanceado para perros adultos de todas las razas",
         "price": 100,
         "stock": 100,
         "image": "/Mature.png"
     },
     {
         "id": 4,
-        "name": "ZenCat",
-        "description": "Vital+ es un alimento balanceado para perros adultos de todas las razas",
+        "name": "PowerBites",
+        "description": "PowerBites son unos snacks especiales para el entrenamiento de tus mascotas",
         "price": 100,
         "stock": 100,
-        "image": "/Vital+.png"
+        "image": "/PowerBites.png"
     }
 ]
