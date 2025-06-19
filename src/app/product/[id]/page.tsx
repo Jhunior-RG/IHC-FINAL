@@ -16,31 +16,20 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import user from "@/constant/user";
-import { ArrowDown, RailSymbol, Star } from "lucide-react";
+import { ArrowDown, Star } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-const product: Product = {
-    id: 1,
-    name: "PawFuel Mature Raza Pequeña",
-    price: 100,
-    image: "/Mature.png",
-    tags: ["Mascotas", "Alimentos", "Perros", "Pequeños"],
-    stock: 200,
-};
+import { useState } from "react";
+import { products } from "@/constant/products";
+import { reviews } from "@/constant/reviews";
+const product: Product = products[0];
+
 const page = () => {
-    const [reviews, setReviews] = useState<ReviewProps[]>([]);
     const [sort, setSort] = useState<"latest" | "best" | "worst">("latest");
     const [rating, setRating] = useState<number>(0);
     const [review, setReview] = useState<string>("");
-    const getReviews = async () => {
-        const reviews = await fetch("/reviews.json");
-        const reviewsData = await reviews.json();
-        setReviews(reviewsData);
-    };
     const [cantidad, setCantidad] = useState<number>(1);
-    useEffect(() => {
-        getReviews();
-    }, []);
+    const [reviewsList, setReviews] = useState(reviews);
+
     return (
         <div>
             <div className="flex justify-center items-center gap-40 py-10 sm:max-w-4/5 mx-auto  ">
@@ -288,7 +277,7 @@ const page = () => {
                                             setReview(e.target.value)
                                         }
                                         value={review}
-                                        />
+                                    />
                                 </div>
                             </CardContent>
                         </Card>
@@ -301,8 +290,9 @@ const page = () => {
                                 className="bg-secondary hover:bg-secondary/80  text-white"
                                 onClick={() => {
                                     setReviews([
-                                        ...reviews,
+                                        ...reviewsList,
                                         {
+                                            id: reviewsList.length + 1,
                                             name: user.name,
                                             rating,
                                             description: review,
@@ -351,7 +341,7 @@ const page = () => {
                             </Button>
                         </div>
                         {sort === "latest" &&
-                            reviews
+                            reviewsList
                                 .sort(
                                     (a, b) =>
                                         new Date(b.date).getTime() -
@@ -361,13 +351,13 @@ const page = () => {
                                     <Review key={index} review={review} />
                                 ))}
                         {sort === "best" &&
-                            reviews
+                            reviewsList
                                 .sort((a, b) => b.rating - a.rating)
                                 .map((review, index) => (
                                     <Review key={index} review={review} />
                                 ))}
                         {sort === "worst" &&
-                            reviews
+                            reviewsList
                                 .sort((a, b) => a.rating - b.rating)
                                 .map((review, index) => (
                                     <Review key={index} review={review} />

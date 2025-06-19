@@ -1,10 +1,13 @@
-[
+import type { Product } from "@/components/CardProduct";
+
+export const products: Product[] = [
     {
         "id": 1,
         "name": "PowerBites Adulto",
         "description": "Alimentos balanceados para perros adultos de todas las razas",
         "price": 100,
         "stock": 100,
+        "tags": ["Mascotas", "Alimentos", "Perros", "Pequeños"],
         "image": "/PowerBites.png"
     },
     {

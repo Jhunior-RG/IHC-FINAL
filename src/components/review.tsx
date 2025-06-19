@@ -9,6 +9,7 @@ import {
 } from "date-fns";
 
 export interface ReviewProps {
+    id: number;
     name: string;
     description: string;
     image: string;
