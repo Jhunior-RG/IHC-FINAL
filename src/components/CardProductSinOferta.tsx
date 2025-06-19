@@ -34,7 +34,7 @@ const CardProduct = ({ product }: { product: Product }) => {
                     <p className="text-primary font-bold">
                         Bs. {product.price}
                     </p>
-                    <ButtonAddShoppingCart />
+                    <ButtonAddShoppingCart product={product} />
                 </Card>
 
             </Link>
