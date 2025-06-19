@@ -1,5 +1,6 @@
 "use client";
-import { products } from "@/constant/products"; 
+import { products } from "@/constant/products";
+import { Plus } from "lucide-react";
 import CardProduct from "./CardProduct";
 import { Button } from "./ui/button";
 import {
@@ -20,6 +21,7 @@ const SectionDiscountedProducts = () => {
                     Productos en descuento
                 </h2>
                 <Button variant={"secondary"} className="rounded-full text-xs">
+                    <Plus className="w-4 h-4 text-white" />
                     Ver más
                 </Button>
             </div>
