@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { Poppins } from "next/font/google";
 import { CartProvider } from "@/context/CartContext";
+import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 
 const poppins = Poppins({
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,6 +22,7 @@ export default function RootLayout({
             <body className="font-normal">
                 <CartProvider>
                     <NavBar />
+                    <DynamicBreadcrumb />
                     {children}
                     <Footer />
                 </CartProvider>
