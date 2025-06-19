@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
 
 // Datos de ejemplo para la wea
 const mockProducts = [
@@ -207,27 +208,29 @@ const Search = () => {
                       onSelect={() => handleSelect(product)}
                       className="cursor-pointer hover:bg-muted/50 p-3"
                     >
-                      <div className="flex items-center gap-3 w-full">
-                        <div className="relative">
-                          <Image
-                            src={product.image || "/placeholder.svg"}
-                            alt={product.name}
-                            width={40}
-                            height={40}
-                            className="rounded-md object-cover"
-                          />
-                          {product.popular && (
-                            <Badge className="absolute -top-1 -right-1 text-xs px-1 py-0 h-4">Popular</Badge>
-                          )}
+                      <Link onClick={clearSearch} href={`/product/${product.id}`}>
+                        <div className="flex items-center gap-3 w-full">
+                          <div className="relative">
+                            <Image
+                              src={product.image || "/placeholder.svg"}
+                              alt={product.name}
+                              width={40}
+                              height={40}
+                              className="rounded-md object-cover"
+                            />
+                            {product.popular && (
+                              <Badge className="absolute -top-1 -right-1 text-xs px-1 py-0 h-4">Popular</Badge>
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-sm truncate">{product.name}</p>
+                            <p className="text-xs text-muted-foreground">{product.category}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="font-semibold text-sm text-primary">{product.price}</p>
+                          </div>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm truncate">{product.name}</p>
-                          <p className="text-xs text-muted-foreground">{product.category}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-semibold text-sm text-primary">{product.price}</p>
-                        </div>
-                      </div>
+                      </Link >
                     </CommandItem>
                   ))}
                 </CommandGroup>
