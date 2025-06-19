@@ -1,9 +1,8 @@
 "use client"
 import Search from "./Search"
-import ShoppingCart from "./ShoppingCart"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart } from "lucide-react"
+import {Heart, ShoppingCart, CircleUserRound } from "lucide-react"
 
 const NavBar = () => {
     return (
@@ -22,7 +21,7 @@ const NavBar = () => {
                 <div className="flex-1 max-w-2xl mx-8">
                     <Search />
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mr-10">
                     <div className="relative">
                         <Link href="/favoritos" className="group">
                             <div className="p-2 rounded-full hover:bg-primary/10 transition-colors duration-200 group-hover:scale-105 transform">
@@ -35,6 +34,9 @@ const NavBar = () => {
                     </div>
                     <div className="transform hover:scale-105 transition-transform duration-200">
                         <ShoppingCart />
+                    </div>
+                    <div className="transform hover:scale-105 transition-transform duration-200">
+                        <CircleUserRound />
                     </div>
                 </div>
 
