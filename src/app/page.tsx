@@ -52,7 +52,39 @@ const Page = () => {
                     </div>
                 </div>
             </div>
-            <SectionDiscountedProducts />
+            <div className="bg-white flex items-center justify-between pt-16 pb-0">
+                <div className="pl-10 max-w-xl ml-10 xl:ml-52">
+                    <h1 style={{ color: '#265B8F' }} className="text-5xl font-semibold">
+                        Descubre el plan de 
+                    </h1>
+                    <h1 style={{ color: '#265B8F' }} className="text-5xl font-semibold">
+                        alimentación ideal
+                    </h1>
+                    <h1 style={{ color: '#265B8F' }} className="text-5xl font-semibold">
+                        para tu mascota
+                    </h1>
+                    <Button
+                        variant="secondary"
+                        size="sm"
+                        className="rounded-full text-xs mt-10 py-6 ml-10"
+                    >
+                        Descubre el alimento adecuado para tu mascota
+                    </Button>
+                </div>
+
+                <Image
+                    src="/perroJoy.png"
+                    alt="PawFuel"
+                    width={692.78}
+                    height={686}
+                    className="ml-auto object-contain w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[692.78px] h-auto"
+                />
+            </div>
+
+            <div style={{ background: '#D5E5F4' }} className="m-0 p-0">
+                <SectionDiscountedProducts />
+            </div>
+
         </>
     );
 };

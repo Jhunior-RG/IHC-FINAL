@@ -55,7 +55,7 @@ const products: Product[] = [
 ];
 const SectionDiscountedProducts = () => {
     return (
-        <div className="w-4/5 mx-auto py-5 flex flex-col gap-5">
+        <div style={{background: '#D5E5F4'}}className="w-4/5 mx-auto py-5 flex flex-col gap-5">
             <div className="flex justify-between">
                 <h2 className="text-xl font-bold">Productos en descuento</h2>
                 <Button variant={"secondary"} className="rounded-full text-xs">
