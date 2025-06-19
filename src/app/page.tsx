@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { ChevronDown, Heart, Star, Users, Award } from "lucide-react"
+import { ChevronDown, Heart, Star, Users, HeartPulse } from "lucide-react"
 
 const Page = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -46,7 +46,7 @@ const Page = () => {
     { icon: Heart, number: "50K+", label: "Mascotas Felices" },
     { icon: Users, number: "25K+", label: "Familias Satisfechas" },
     { icon: Star, number: "4.9", label: "Calificación Promedio" },
-    { icon: Award, number: "5+", label: "Años de Experiencia" },
+    { icon: HeartPulse, number: "50+", label: "Productos saludables" },
   ]
 
   return (
