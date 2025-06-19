@@ -49,7 +49,7 @@ const Review = ({ review }: { review: ReviewProps }) => {
                                 (_, index) => (
                                     <Star
                                         key={index}
-                                        className="w-4 h-4 text-yellow-500 fill-yellow-500"
+                                        className="w-5 h-5 text-yellow-500 fill-yellow-500"
                                     />
                                 )
                             )}
@@ -57,7 +57,7 @@ const Review = ({ review }: { review: ReviewProps }) => {
                                 (_, index) => (
                                     <Star
                                         key={index}
-                                        className="w-4 h-4 text-yellow-500"
+                                        className="w-5 h-5 text-yellow-500"
                                     />
                                 )
                             )}

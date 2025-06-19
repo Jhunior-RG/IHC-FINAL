@@ -15,7 +15,8 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowDown } from "lucide-react";
+import user from "@/constant/user";
+import { ArrowDown, RailSymbol, Star } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 const product: Product = {
@@ -29,6 +30,8 @@ const product: Product = {
 const page = () => {
     const [reviews, setReviews] = useState<ReviewProps[]>([]);
     const [sort, setSort] = useState<"latest" | "best" | "worst">("latest");
+    const [rating, setRating] = useState<number>(0);
+    const [review, setReview] = useState<string>("");
     const getReviews = async () => {
         const reviews = await fetch("/reviews.json");
         const reviewsData = await reviews.json();
@@ -235,6 +238,85 @@ const page = () => {
                     value="reviews"
                     className="border-2 rounded-b-4xl rounded-r-4xl p-5"
                 >
+                    <div className="pb-5">
+                        <Card className="rounded-2xl p-2">
+                            <CardContent className="flex gap-4 p-0">
+                                <Image
+                                    className="rounded-full h-15 w-15"
+                                    src={user.image}
+                                    alt="imagen de perfil"
+                                    width={50}
+                                    height={50}
+                                />
+                                <div className="flex flex-col gap-2 w-full">
+                                    <div className="flex justify-between">
+                                        <h3 className="text-lg font-bold w-full">
+                                            {user.name}
+                                        </h3>
+                                        <div className="flex w-full justify-center">
+                                            {Array.from({ length: rating }).map(
+                                                (_, index) => (
+                                                    <Star
+                                                        key={index}
+                                                        onClick={() =>
+                                                            setRating(index + 1)
+                                                        }
+                                                        className="w-5 h-5 text-yellow-500 fill-yellow-500 hover:cursor-pointer hover:text-yellow-500 hover:fill-yellow-500 "
+                                                    />
+                                                )
+                                            )}
+                                            {Array.from({
+                                                length: 5 - rating,
+                                            }).map((_, index) => (
+                                                <Star
+                                                    key={5 - index}
+                                                    onClick={() =>
+                                                        setRating(
+                                                            index + 1 + rating
+                                                        )
+                                                    }
+                                                    className="w-5 h-5 text-yellow-500 hover:cursor-pointer hover:text-yellow-500 hover:fill-yellow-500"
+                                                />
+                                            ))}
+                                        </div>
+                                        <div className="w-full"></div>
+                                    </div>
+                                    <Input
+                                        placeholder="Escribe tu reseña"
+                                        className="w-full"
+                                        onChange={(e) =>
+                                            setReview(e.target.value)
+                                        }
+                                        value={review}
+                                        />
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <div className="flex justify-end gap-2 py-2">
+                            <Button className="bg-gray-200 hover:bg-gray-300 text-black">
+                                Cancelar
+                            </Button>
+                            <Button
+                                variant={"secondary"}
+                                className="bg-secondary hover:bg-secondary/80  text-white"
+                                onClick={() => {
+                                    setReviews([
+                                        ...reviews,
+                                        {
+                                            name: user.name,
+                                            rating,
+                                            description: review,
+                                            image: user.image,
+                                            date: new Date().toISOString(),
+                                        },
+                                    ]);
+                                }}
+                            >
+                                Publicar Reseña
+                            </Button>
+                        </div>
+                    </div>
+
                     <div className="flex flex-col gap-4">
                         <div className="flex justify-between">
                             <Button
