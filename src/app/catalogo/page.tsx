@@ -16,6 +16,14 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/constant/products";
+import {
+    Breadcrumb,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+    BreadcrumbLink,
+    BreadcrumbItem,
+    BreadcrumbList,
+} from "@/components/ui/breadcrumb";
 
 interface Filters {
     tipoMascota: string;
@@ -100,6 +108,19 @@ const page = () => {
 
     return (
         <>
+            <Breadcrumb className="px-10 pt-5" >
+                <BreadcrumbList>
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/">Inicio</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/catalogo">
+                            Catálogo
+                        </BreadcrumbLink>
+                    </BreadcrumbItem>
+                </BreadcrumbList>
+            </Breadcrumb>
             <div className="flex items-center justify-between px-10 mt-5">
                 <h1 className="text-3xl font-semibold ml-10">Catálogo</h1>
                 <Button
