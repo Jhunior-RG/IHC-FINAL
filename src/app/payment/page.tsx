@@ -14,6 +14,7 @@ import { Tabs, TabsTrigger, TabsList, TabsContent } from "@/components/ui/tabs";
 import { useCart } from "@/context/CartContext";
 import { Butcherman } from "next/font/google";
 import Image from "next/image";
+import LocationCards from "@/components/locationCard";
 
 const page = () => {
     const { cart } = useCart();
@@ -77,7 +78,7 @@ const page = () => {
                     value="delivery"
                     className="border-2 rounded-b-4xl rounded-r-4xl p-5"
                 >
-                    <p>A domicilio</p>
+                    <LocationCards/>                    
                 </TabsContent>
                 <TabsContent
                     value="pickup"
@@ -181,7 +182,7 @@ const page = () => {
                             width={200}
                             height={200}
                         />
-                        <Button variant={"secondary"}>Ya pague</Button>
+                        <Button variant={"secondary"}>Ya pagué</Button>
                     </div>
                 </TabsContent>
             </Tabs>
