@@ -9,8 +9,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { products } from "@/constant/products"
 
-const recentSearches = ["Royal Canin", "Collar antipulgas", "Juguetes gatos"]
-const popularSearches = ["Alimento perros", "Arena gatos", "Snacks", "Correas"]
+const recentSearches = ["Saludable", "Comida para perros", "Entrenamiento"]
+const popularSearches = ["Alimento para perros", "Alimentos saludables", "Snacks"]
 
 const Search = () => {
   const [value, setValue] = useState("")
