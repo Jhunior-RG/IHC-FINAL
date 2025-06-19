@@ -55,9 +55,14 @@ const products: Product[] = [
 ];
 const SectionDiscountedProducts = () => {
     return (
-        <div style={{background: '#D5E5F4'}}className="w-4/5 mx-auto py-5 flex flex-col gap-5">
+        <div
+            style={{ background: "#D5E5F4" }}
+            className="w-4/5 mx-auto py-5 flex flex-col gap-5"
+        >
             <div className="flex justify-between mt-20">
-                <h2 className="text-2xl font-semibold">Productos en descuento</h2>
+                <h2 className="text-2xl font-semibold">
+                    Productos en descuento
+                </h2>
                 <Button variant={"secondary"} className="rounded-full text-xs">
                     Ver más
                 </Button>
@@ -65,7 +70,10 @@ const SectionDiscountedProducts = () => {
             <Carousel className="">
                 <CarouselContent>
                     {products.map((product) => (
-                        <CarouselItem key={product.id} className="basis-1/2 md:basis-1/5 m-3">
+                        <CarouselItem
+                            key={product.id}
+                            className="basis-1/2 md:basis-1/5 m-3"
+                        >
                             <CardProduct key={product.id} product={product} />
                         </CarouselItem>
                     ))}

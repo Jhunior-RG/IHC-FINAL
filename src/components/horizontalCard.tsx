@@ -81,7 +81,7 @@ const CardProduct = ({ product }: { product: Product }) => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <ButtonAddShoppingCart />
+                  <ButtonAddShoppingCart  product={product}/>
                 </div>
               </div>
             </div>

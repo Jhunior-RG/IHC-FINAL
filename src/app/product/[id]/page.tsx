@@ -77,7 +77,10 @@ const page = () => {
                                     </span>
                                 </p>
 
-                                <ButtonAddShoppingCart />
+                                <ButtonAddShoppingCart
+                                    product={product}
+                                    quantity={cantidad}
+                                />
                             </CardContent>
                         </Card>
                     </div>

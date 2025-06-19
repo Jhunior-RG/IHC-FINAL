@@ -6,6 +6,7 @@ export const products: Product[] = [
         "name": "PowerBites Adulto",
         "description": "Alimentos balanceados para perros adultos de todas las razas",
         "price": 100,
+        "priceDiscount": 80,
         "stock": 100,
         "tags": ["Mascotas", "Alimentos", "Perros", "Pequeños"],
         "image": "/PowerBites.png"
@@ -15,6 +16,7 @@ export const products: Product[] = [
         "name": "ZenCat",
         "description": "ZenCat es un alimento balanceado para gatos adultos de todas las razas",
         "price": 100,
+        "priceDiscount": 80,
         "stock": 100,
         "image": "/ZenCat.png"
     },
@@ -23,6 +25,7 @@ export const products: Product[] = [
         "name": "ZenCat",
         "description": "Mature es un alimento balanceado para perros adultos de todas las razas",
         "price": 100,
+        "priceDiscount": 80,
         "stock": 100,
         "image": "/Mature.png"
     },
@@ -31,6 +34,7 @@ export const products: Product[] = [
         "name": "ZenCat",
         "description": "Vital+ es un alimento balanceado para perros adultos de todas las razas",
         "price": 100,
+        "priceDiscount": 80,
         "stock": 100,
         "image": "/Vital+.png"
     }

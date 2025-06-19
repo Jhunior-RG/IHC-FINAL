@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { Poppins } from "next/font/google";
+import { CartProvider } from "@/context/CartContext";
 
 const poppins = Poppins({
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -18,9 +19,11 @@ export default function RootLayout({
     return (
         <html lang="es" className={poppins.className}>
             <body className="font-normal">
-                <NavBar />
-                {children}
-                <Footer />
+                <CartProvider>
+                    <NavBar />
+                    {children}
+                    <Footer />
+                </CartProvider>
             </body>
         </html>
     );
