@@ -80,6 +80,12 @@ const Page = () => {
     const [filteredProducts, setFilteredProducts] = useState<
         ProductRecomendado[]
     >([]);
+    const [selectedTags, setSelectedTags] = useState({
+        raza: "",
+        edad: "",
+        tamano: "",
+        peso: "",
+    });
 
     useEffect(() => {
         if (pet) {
@@ -94,7 +100,11 @@ const Page = () => {
                 </h3>
                 <div className="flex flex-wrap gap-4">
                     {filteredProducts.map((product) => (
-                        <CardRecomended key={product.id} product={product} />
+                        <CardRecomended
+                            key={product.id}
+                            product={product}
+                            filterTags={selectedTags}
+                        />
                     ))}
                 </div>
             </div>
@@ -132,6 +142,7 @@ const Page = () => {
                             setSelected={setPet}
                             setStep={setStep}
                             onRecommend={setFilteredProducts}
+                            setSelectedTags={setSelectedTags}
                         />
                     )}
                 </CardContent>
@@ -192,11 +203,18 @@ const Step1 = ({
     setSelected,
     setStep,
     onRecommend,
+    setSelectedTags,
 }: {
     selected: "perro" | "gato" | null;
     setSelected: (value: "perro" | "gato" | null) => void;
     setStep: (value: number) => void;
     onRecommend: (products: ProductRecomendado[]) => void;
+    setSelectedTags: (tags: {
+        raza: string;
+        edad: string;
+        tamano: string;
+        peso: string;
+    }) => void;
 }) => {
     // Ejemplo de opciones, puedes reemplazar por datos reales
     const razasPerros = ["Labrador", "Pug", "Pastor Alemán", "Otro"];
@@ -229,6 +247,7 @@ const Step1 = ({
             return true;
         });
         onRecommend(filtrados as ProductRecomendado[]);
+        setSelectedTags({ raza, edad, tamano, peso });
     };
 
     return (
