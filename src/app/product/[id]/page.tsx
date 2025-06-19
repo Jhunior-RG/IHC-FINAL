@@ -1,6 +1,9 @@
+"use client";
 import ButtonAddShoppingCart from "@/components/ButtonAddShoppingCart";
 import type { Product } from "@/components/CardProduct";
+import Review, { type ReviewProps } from "@/components/review";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
@@ -12,8 +15,9 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ArrowDown } from "lucide-react";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
+import { useEffect, useState } from "react";
 const product: Product = {
     id: 1,
     name: "PawFuel Mature Raza Pequeña",
@@ -23,6 +27,16 @@ const product: Product = {
     stock: 200,
 };
 const page = () => {
+    const [reviews, setReviews] = useState<ReviewProps[]>([]);
+    const [sort, setSort] = useState<"latest" | "best" | "worst">("latest");
+    const getReviews = async () => {
+        const reviews = await fetch("/reviews.json");
+        const reviewsData = await reviews.json();
+        setReviews(reviewsData);
+    };
+    useEffect(() => {
+        getReviews();
+    }, []);
     return (
         <div>
             <div className="flex justify-center items-center gap-40 py-10 sm:max-w-4/5 mx-auto  ">
@@ -41,7 +55,7 @@ const page = () => {
                             <Badge key={tag}>{tag}</Badge>
                         ))}
                     </div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-4">
                         <div>
                             <p className="text-2xl font-bold">
                                 Bs. {product.price}
@@ -205,14 +219,67 @@ const page = () => {
                 <TabsContent
                     value="similar"
                     className="border-2 rounded-b-4xl rounded-r-4xl p-5"
-                >
-                    Change y our password here.
-                </TabsContent>
+                ></TabsContent>
                 <TabsContent
                     value="reviews"
                     className="border-2 rounded-b-4xl rounded-r-4xl p-5"
                 >
-                    Change y our password here.
+                    <div className="flex flex-col gap-4">
+                        <div className="flex justify-between">
+                            <Button
+                                className={`${
+                                    sort === "latest"
+                                        ? "bg-primary text-white"
+                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                }`} 
+                                onClick={() => setSort("latest")}
+                            >
+                                Más Recientes Primero <ArrowDown />
+                            </Button>
+                            <Button
+                                className={`${
+                                    sort === "best"
+                                        ? "bg-primary text-white"
+                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                }`}
+                                onClick={() => setSort("best")}
+                            >
+                                Mejores Primero <ArrowDown />
+                            </Button>
+                            <Button
+                                className={`${
+                                    sort === "worst"
+                                        ? "bg-primary text-white"
+                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                }`}
+                                onClick={() => setSort("worst")}
+                            >
+                                Peores Primero <ArrowDown />
+                            </Button>
+                        </div>
+                        {sort === "latest" &&
+                            reviews
+                                .sort(
+                                    (a, b) =>
+                                        new Date(b.date).getTime() -
+                                        new Date(a.date).getTime()
+                                )
+                                .map((review, index) => (
+                                    <Review key={index} review={review} />
+                                ))}
+                        {sort === "best" &&
+                            reviews
+                                .sort((a, b) => b.rating - a.rating)
+                                .map((review, index) => (
+                                    <Review key={index} review={review} />
+                                ))}
+                        {sort === "worst" &&
+                            reviews
+                                .sort((a, b) => a.rating - b.rating)
+                                .map((review, index) => (
+                                    <Review key={index} review={review} />
+                                ))}
+                    </div>
                 </TabsContent>
             </Tabs>
         </div>
