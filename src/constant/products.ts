@@ -92,16 +92,6 @@ export const products: Product[] = [
         image: "/CatJoyArena.png",
     },
     {
-        id: 10,
-        name: "PerroFresh Shampoo Aloe Vera 500ml",
-        description: "Shampoo suave con aloe vera para piel sensible de perros",
-        price: 50,
-        priceDiscount: 45,
-        stock: 90,
-        tags: ["Mascotas", "Higiene", "Perros"],
-        image: "/ShampooAloe.png",
-    },
-    {
         id: 11,
         name: "SnackyCat Mix 80g",
         description: "Snacks crocantes y sabrosos para gatos adultos",
