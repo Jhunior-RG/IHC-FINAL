@@ -3,12 +3,13 @@ import { useState, useRef, useEffect } from "react"
 import Search from "./Search"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, CircleUserRound, MapPin, Package, User, Settings, LogOut, ChevronDown } from "lucide-react"
+import { Heart, CircleUserRound, MapPin, Package, User, Settings, LogOut, ChevronDown, Menu } from "lucide-react"
 import ShoppingCart from "./ShoppingCart"
 
 const NavBar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false)
   const userMenuRef = useRef<HTMLDivElement>(null)
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   // Cerrar menú al hacer click fuera
   useEffect(() => {
@@ -68,17 +69,53 @@ const NavBar = () => {
         <div className="flex-1 max-w-2xl mx-8">
           <Search />
         </div>
-        <div className="flex items-center gap-3 mr-10">
-          <div className="relative">
-            <Link href="/favoritos" className="group">
-              <div className="p-2 rounded-full hover:bg-primary/10 transition-colors duration-200 group-hover:scale-105 transform">
-                <Heart className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors duration-200" />
-              </div>
-              <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium shadow-sm">
-                6
-              </span>
-            </Link>
+        {/* Menú de Navegación Principal */}
+        <nav className="hidden lg:flex items-center gap-8 ml-8">
+          <Link
+            href="/catalogo"
+            className="text-gray-700 hover:text-primary font-medium transition-colors duration-200 relative group"
+          >
+            Catálogo
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+          </Link>
+          <Link
+            href="/recomendados"
+            className="text-gray-700 hover:text-primary font-medium transition-colors duration-200 relative group"
+          >
+            Recomendador Inteligente
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+          </Link>
+        </nav>
+        {/* Menú móvil hamburguesa */}
+        <button
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors duration-200"
+        >
+          <Menu className="h-6 w-6 text-gray-600" />
+        </button>
+
+        {/* Menú móvil desplegable */}
+        {showMobileMenu && (
+          <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg lg:hidden z-40">
+            <div className="px-6 py-4 space-y-3">
+              <Link
+                href="/catalogo"
+                className="block text-gray-700 hover:text-primary font-medium transition-colors duration-200 py-2"
+                onClick={() => setShowMobileMenu(false)}
+              >
+                Catálogo
+              </Link>
+              <Link
+                href="/recomendados"
+                className="block text-gray-700 hover:text-primary font-medium transition-colors duration-200 py-2"
+                onClick={() => setShowMobileMenu(false)}
+              >
+                Recomendador Inteligente
+              </Link>
+            </div>
           </div>
+        )}
+        <div className="flex items-center gap-3 mr-10">
           <ShoppingCart />
 
           {/* User Menu */}
@@ -130,6 +167,7 @@ const NavBar = () => {
                     className="flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 transition-colors duration-200 w-full text-left"
                     onClick={() => {
                       setShowUserMenu(false)
+                      // Aquí puedes agregar la lógica de logout
                     }}
                   >
                     <LogOut className="h-5 w-5" />
