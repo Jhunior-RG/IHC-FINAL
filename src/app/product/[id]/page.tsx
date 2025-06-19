@@ -56,7 +56,20 @@ const page = () => {
                     </div>
                     <div className="flex justify-between items-center gap-4">
                         <div>
-                            <p className="text-2xl font-bold">Bs. {product.price}</p>
+                            {product.priceDiscount ? (
+                                <div className="text-primary font-bold flex items-baseline gap-2">
+                                    <span className="text-gray-500 text-base line-through">
+                                        Bs. {product.price}
+                                    </span>
+                                    <span className="text-2xl">
+                                        Bs. {product.priceDiscount}
+                                    </span>
+                                </div>
+                            ) : (
+                                <p className="text-primary font-bold text-2xl">
+                                    Bs. {product.price}
+                                </p>
+                            )}
                             <p className="text-sm text-gray-500">
                                 {product.stock} en Stock
                             </p>
@@ -317,8 +330,8 @@ const page = () => {
                         <div className="flex justify-between">
                             <Button
                                 className={`${sort === "latest"
-                                        ? "bg-secondary hover:bg-secondary/80  text-white"
-                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                    ? "bg-secondary hover:bg-secondary/80  text-white"
+                                    : "bg-gray-200 text-black hover:bg-gray-300"
                                     }`}
                                 onClick={() => setSort("latest")}
                             >
@@ -326,8 +339,8 @@ const page = () => {
                             </Button>
                             <Button
                                 className={`${sort === "best"
-                                        ? "bg-secondary hover:bg-secondary/80  text-white"
-                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                    ? "bg-secondary hover:bg-secondary/80  text-white"
+                                    : "bg-gray-200 text-black hover:bg-gray-300"
                                     }`}
                                 onClick={() => setSort("best")}
                             >
@@ -335,8 +348,8 @@ const page = () => {
                             </Button>
                             <Button
                                 className={`${sort === "worst"
-                                        ? "bg-secondary hover:bg-secondary/80  text-white"
-                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                    ? "bg-secondary hover:bg-secondary/80  text-white"
+                                    : "bg-gray-200 text-black hover:bg-gray-300"
                                     }`}
                                 onClick={() => setSort("worst")}
                             >

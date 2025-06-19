@@ -20,7 +20,7 @@ const CardProduct = ({ product }: { product: Product }) => {
     return (
         <>
             <Link href={`/product/${product.id}`}>
-                <Card className="max-w-60 border rounded-2xl p-4 shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center bg-white h-full justify-between relative hover:scale-105">
+                <Card className="max-w-60 max-h-100 border rounded-2xl p-4 shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center bg-white h-full justify-between relative hover:scale-105">
                     {product.priceDiscount && (
                         <span className="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold px-1 py-6 rotate-[-20deg] rounded-full shadow-lg ">
                             ¡OFERTA!
@@ -47,7 +47,6 @@ const CardProduct = ({ product }: { product: Product }) => {
                             Bs. {" " + product.price}
                         </p>
                     )}
-
                     <ButtonAddShoppingCart product={product} />
                 </Card>
             </Link>
