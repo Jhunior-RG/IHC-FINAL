@@ -22,6 +22,7 @@ import { Plus } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
+import { redirect, useRouter } from "next/navigation";
 
 const MapaSelector = dynamic(() => import("@/components/MapaSelector"), {
     ssr: false,
@@ -48,8 +49,7 @@ const page = () => {
             image: "/direccion1.png",
         },
     ]);
-    const [direccionLegible, setDireccionLegible] = useState<string>("");
-    const mapaRef = useRef<any>(null);
+    const router = useRouter();
     useEffect(() => {
         const stored = localStorage.getItem("direcciones");
         if (stored) {
@@ -57,27 +57,8 @@ const page = () => {
         }
     }, []);
     const onPay = () => {
-        const pedidos = localStorage.getItem("cart");
-        alert("Pedido realizado con exito");
+        router.push("/perfil/pedidos");
     };
-    // Función para obtener dirección legible desde lat/lng
-    const obtenerDireccion = async (lat: number, lng: number) => {
-        try {
-            const response = await fetch(
-                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
-            );
-            const data = await response.json();
-            setDireccionLegible(data.address.road || "Dirección no encontrada");
-        } catch (error) {
-            setDireccionLegible("Error al obtener dirección");
-        }
-    };
-
-    useEffect(() => {
-        obtenerDireccion(selectedLat, selectedLng);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedLat, selectedLng]);
-
 
     return (
         <div className="flex flex-col py-10">
@@ -142,7 +123,7 @@ const page = () => {
                     value="delivery"
                     className="border-2 rounded-b-4xl rounded-r-4xl p-5 flex gap-2"
                 >
-                    <LocationCards/>                    
+                    <LocationCards />
                 </TabsContent>
                 <TabsContent
                     value="pickup"
@@ -251,7 +232,6 @@ const page = () => {
                     </div>
                 </TabsContent>
             </Tabs>
-            
         </div>
     );
 };
