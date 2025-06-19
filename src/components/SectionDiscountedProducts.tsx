@@ -20,7 +20,7 @@ const SectionDiscountedProducts = () => {
                 <h2 className="text-2xl font-semibold">
                     Productos en descuento
                 </h2>
-                <Button variant={"secondary"} className="rounded-full text-xs">
+                <Button variant={"secondary"} className="rounded-full text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
                     <Plus className="w-4 h-4 text-white" />
                     Ver más
                 </Button>
