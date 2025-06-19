@@ -46,12 +46,6 @@ const CardProduct = ({ product }: { product: Product }) => {
 
             <div className="flex-1 flex flex-col justify-between min-w-0">
               <div>
-                <Link href={`/product/${product.id}`}>
-                  <h3 className="text-sm sm:text-base font-medium text-gray-900 line-clamp-2 hover:text-primary transition-colors duration-200 mb-2">
-                    {product.name}
-                  </h3>
-                </Link>
-
                 {product.description && (
                   <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 mb-2">{product.description}</p>
                 )}
