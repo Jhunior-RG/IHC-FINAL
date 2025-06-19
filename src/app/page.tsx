@@ -2,6 +2,7 @@
 import SectionDiscountedProducts from "@/components/SectionDiscountedProducts";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const Page = () => {
     return (
@@ -42,20 +43,22 @@ const Page = () => {
                                 </p>
                             </div>
                         </div>
-                        <Button
-                            variant={"secondary"}
-                            size={"sm"}
-                            className="rounded-full text-xs"
-                        >
-                            Ver catalogo
-                        </Button>
+                        <Link href="/catalogo">
+                            <Button
+                                variant={"secondary"}
+                                size={"sm"}
+                                className="rounded-full text-xs"
+                            >
+                                Ver catalogo
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
             <div className="bg-white flex items-center justify-between pt-16 pb-0">
                 <div className="pl-10 max-w-xl ml-10 xl:ml-52">
                     <h1 style={{ color: '#265B8F' }} className="text-5xl font-semibold">
-                        Descubre el plan de 
+                        Descubre el plan de
                     </h1>
                     <h1 style={{ color: '#265B8F' }} className="text-5xl font-semibold">
                         alimentación ideal
@@ -80,7 +83,6 @@ const Page = () => {
                     className="ml-auto object-contain w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[692.78px] h-auto"
                 />
             </div>
-
             <div style={{ background: '#D5E5F4' }} className="m-0 p-0">
                 <SectionDiscountedProducts />
             </div>
