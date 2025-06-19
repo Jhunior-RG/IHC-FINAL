@@ -3,6 +3,14 @@ import type { Product } from "@/components/CardProduct";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
@@ -111,9 +119,88 @@ const page = () => {
                 </TabsContent>
                 <TabsContent
                     value="nutrition"
-                    className="border-2 rounded-b-4xl rounded-r-4xl p-5"
+                    className="border-2 rounded-b-4xl rounded-r-4xl p-5 flex"
                 >
-                    Change y our password here.
+                    <div className="flex flex-col gap-2 w-1/3">
+                        <h3>Valor nutricional (por 100g):</h3>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Nutriente</TableHead>
+                                    <TableHead>Cantidad</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell>Proteínas</TableCell>
+                                    <TableCell>28%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Grasas</TableCell>
+                                    <TableCell>15%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Fibra</TableCell>
+                                    <TableCell>4%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Humedad</TableCell>
+                                    <TableCell>10%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Minerales</TableCell>
+                                    <TableCell>7%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Vitaminas</TableCell>
+                                    <TableCell>10%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Calcio</TableCell>
+                                    <TableCell>1.5%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Fósforo</TableCell>
+                                    <TableCell>1.5%</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Omega 3 y 6</TableCell>
+                                    <TableCell>1.5%</TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </div>
+                    <div className="w-2/3">
+                        <h3 className="font-semibold">
+                            Ingredientes principales:
+                        </h3>
+                        <ul className="list-disc list-inside ml-4">
+                            <li>Carne de pollo fresca.</li>
+                            <li>Harina integral de arroz.</li>
+                            <li>Aceite de salmón.</li>
+                            <li>Extracto natual de yuca</li>
+                            <li>Pulpa de remolacha.</li>
+                            <li>Vitaminas A, D y E.</li>
+                        </ul>
+                        <h3 className="font-semibold">Beneficios clave:</h3>
+                        <ol className="list-decimal list-inside ml-4">
+                            <li>
+                                Digestión saludable: ingredientes naturales
+                                altamente digestibles para una absorción óptima
+                                de nutrientes.
+                            </li>
+                            <li>
+                                Articulaciones fuertes: enriquecido con
+                                glucosamina y condroitina para mantener la
+                                movilidad y vitalidad de tu mascota.
+                            </li>
+                            <li>
+                                Piel y pelaje radiantes: equilibrio ideal de
+                                Omega 3 y Omega 6 para un pelaje suave y piel
+                                saludable.
+                            </li>
+                        </ol>
+                    </div>
                 </TabsContent>
                 <TabsContent
                     value="similar"
