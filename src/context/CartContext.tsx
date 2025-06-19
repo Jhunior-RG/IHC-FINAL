@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import type { Product } from "@/components/CardProduct";
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
     quantity: number;
 }
 
