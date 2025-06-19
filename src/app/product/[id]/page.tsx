@@ -329,28 +329,31 @@ const page = () => {
                     <div className="flex flex-col gap-4">
                         <div className="flex justify-between">
                             <Button
-                                className={`${sort === "latest"
-                                    ? "bg-secondary hover:bg-secondary/80  text-white"
-                                    : "bg-gray-200 text-black hover:bg-gray-300"
-                                    }`}
+                                className={`${
+                                    sort === "latest"
+                                        ? "bg-secondary hover:bg-secondary/80  text-white"
+                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                }`}
                                 onClick={() => setSort("latest")}
                             >
                                 Más Recientes Primero <ArrowDown />
                             </Button>
                             <Button
-                                className={`${sort === "best"
-                                    ? "bg-secondary hover:bg-secondary/80  text-white"
-                                    : "bg-gray-200 text-black hover:bg-gray-300"
-                                    }`}
+                                className={`${
+                                    sort === "best"
+                                        ? "bg-secondary hover:bg-secondary/80  text-white"
+                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                }`}
                                 onClick={() => setSort("best")}
                             >
                                 Mejores Primero <ArrowDown />
                             </Button>
                             <Button
-                                className={`${sort === "worst"
-                                    ? "bg-secondary hover:bg-secondary/80  text-white"
-                                    : "bg-gray-200 text-black hover:bg-gray-300"
-                                    }`}
+                                className={`${
+                                    sort === "worst"
+                                        ? "bg-secondary hover:bg-secondary/80  text-white"
+                                        : "bg-gray-200 text-black hover:bg-gray-300"
+                                }`}
                                 onClick={() => setSort("worst")}
                             >
                                 Peores Primero <ArrowDown />
