@@ -137,11 +137,6 @@ const NavBar = () => {
                     </div>
                 )}
                 <div className="flex items-center gap-3 mr-10">
-                    <Link href={"/#"}>
-                        <button className="flex items-center gap-1 p-2 rounded-full hover:bg-primary/10 transition-colors duration-200 hover:scale-105 transform">
-                            <Home className="h-6 w-6 text-gray-600 hover:text-primary transition-colors duration-200" />
-                        </button>
-                    </Link>
                     <ShoppingCart />
 
                     {/* User Menu */}
