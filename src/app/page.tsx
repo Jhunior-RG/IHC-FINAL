@@ -144,71 +144,48 @@ const Page = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-white relative min-h-screen">
-                <div className="bg-white flex items-center justify-between pt-16 pb-0">
-                    {/* Contenido de texto */}
-                    <div className="w-full lg:w-1/2 lg:pl-10 xl:ml-52 justify-center items-center lg:mb-0 pt-8 sm:pt-12 lg:pt-16">
-                        <div className="space-y-2 sm:space-y-4">
-                            <h1
-                                style={{ color: "#265B8F" }}
-                                className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                                    }`}
-                            >
-                                Descubre el plan de
-                            </h1>
-                            <h1
-                                style={{ color: "#265B8F" }}
-                                className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                                    }`}
-                            >
-                                alimentación ideal
-                            </h1>
-                            <h1
-                                style={{ color: "#265B8F" }}
-                                className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                                    }`}
-                            >
-                                para tu mascota
-                            </h1>
-                        </div>
-
-                        <div
-                            className={`mt-6 sm:mt-8 transition-all duration-1000 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                                }`}
+            <div className="bg-white flex items-center justify-between pt-16 pb-0">
+                <div className="pl-10 max-w-xl ml-10 xl:ml-52">
+                    <h1
+                        style={{ color: "#265B8F" }}
+                        className="text-5xl font-semibold"
+                    >
+                        Descubre el plan de
+                    </h1>
+                    <h1
+                        style={{ color: "#265B8F" }}
+                        className="text-5xl font-semibold"
+                    >
+                        alimentación ideal
+                    </h1>
+                    <h1
+                        style={{ color: "#265B8F" }}
+                        className="text-5xl font-semibold"
+                    >
+                        para tu mascota
+                    </h1>
+                    <Link href="/recomendaciones">
+                        <Button
+                            variant="secondary"
+                            size="sm"
+                            className="rounded-full text-xs mt-10 py-6 ml-10"
                         >
-                            <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 max-w-lg">
-                                Nutrición premium diseñada específicamente para las necesidades de tu compañero fiel.
-                            </p>
-                            <Button
-                                variant="secondary"
-                                size="lg"
-                                className="rounded-full text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
-                            >
-                                <span className="hidden sm:inline">Descubre el alimento adecuado para tu mascota</span>
-                                <span className="sm:hidden">Encuentra el alimento ideal</span>
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="w-full lg:w-1/2 relative flex items-end justify-center lg:justify-end min-h-[300px] lg:min-h-screen">
-                        <Image
-                            src="/perroJoy.png"
-                            alt="Perro feliz con PawFuel"
-                            width={692.78}
-                            height={686}
-                            className={`object-contain w-[280px] sm:w-[350px] md:w-[450px] lg:w-[550px] xl:w-[692.78px] h-auto transition-all duration-1000 delay-800 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
-                                }`}
-                        />
-                        <div className="absolute top-4 sm:top-10 right-4 sm:right-10 w-6 h-6 sm:w-8 sm:h-8 bg-primary/20 rounded-full animate-pulse"></div>
-                        <div className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-4 h-4 sm:w-6 sm:h-6 bg-secondary/30 rounded-full animate-bounce delay-1000"></div>
-                    </div>
+                            Descubre el alimento adecuado para tu mascota
+                        </Button>
+                    </Link>
                 </div>
-            </div>
 
-            {/* Sección de Productos con Descuento */}
-            <div style={{ background: "#D5E5F4" }} className="p-0 m-0">
+                <Image
+                    src="/perroJoy.png"
+                    alt="PawFuel"
+                    width={692.78}
+                    height={686}
+                    className="ml-auto object-contain w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[692.78px] h-auto"
+                />
+            </div>
+            <div style={{ background: "#D5E5F4" }} className="m-0 p-0 h-172">
                 <SectionDiscountedProducts />
             </div>
-
 
             <style jsx>{`
         @keyframes fade-in-up {

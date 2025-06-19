@@ -18,6 +18,7 @@ export const products: Product[] = [
         "price": 100,
         "priceDiscount": 80,
         "stock": 100,
+        "tags": ["Mascotas", "Alimentos", "Gatos", "Pequeños"],
         "image": "/ZenCat.png"
     },
     {
@@ -27,6 +28,7 @@ export const products: Product[] = [
         "price": 100,
         "priceDiscount": 80,
         "stock": 100,
+        "tags": ["Mascotas", "Alimentos", "Perros", "Grandes"],
         "image": "/Mature.png"
     },
     {
@@ -36,6 +38,17 @@ export const products: Product[] = [
         "price": 100,
         "priceDiscount": 80,
         "stock": 100,
+        "tags": ["Mascotas", "Snacks", "Perros", "Pequeños"],
         "image": "/PowerBites.png"
-    }
+    },
+    {
+        "id": 5,
+        "name": "PowerBites",
+        "description": "PowerBites son unos snacks especiales para el entrenamiento de tus mascotas",
+        "price": 100,
+        "priceDiscount": 80,
+        "stock": 100,
+        "tags": ["Mascotas", "Snacks", "Perros", "Grandes"],
+        "image": "/PowerBites.png"
+    },
 ]
