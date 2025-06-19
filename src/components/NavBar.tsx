@@ -106,7 +106,7 @@ const NavBar = () => {
                 Catálogo
               </Link>
               <Link
-                href="/recomendados"
+                href="/recomendaciones"
                 className="block text-gray-700 hover:text-primary font-medium transition-colors duration-200 py-2"
                 onClick={() => setShowMobileMenu(false)}
               >
