@@ -26,7 +26,7 @@ const Page = () => {
                         />
                     </div>
 
-                    <div className="flex flex-col items-center justify-center gap-2 w-full z-50">
+                    <div className="flex flex-col items-center justify-center gap-2 w-full ">
                         <div className="flex items-center justify-center gap-2 w-full">
                             <Image
                                 src="/logoWhite.png"
