@@ -84,7 +84,7 @@ const page = () => {
                 <Button
                     variant="secondary"
                     size="sm"
-                    className="rounded-full text-md flex items-center gap-2"
+                    className="rounded-full text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
                     onClick={() => setShowFilters(!showFilters)}
                 >
                     <ListFilter className="w-4 h-4 text-white" />
@@ -279,7 +279,7 @@ const page = () => {
                         <Button
                             variant="secondary"
                             size="sm"
-                            className="rounded-full text-sm flex items-center gap-2"
+                            className="rounded-full text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
                         >
                             <Plus className="w-4 h-4 text-white" />
                             Ver más
@@ -303,7 +303,7 @@ const page = () => {
                             <Button
                                 variant="secondary"
                                 size="sm"
-                                className="rounded-full text-sm flex items-center gap-2"
+                                className="rounded-full text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
                             >
                                 <Plus className="w-4 h-4 text-white" />
                                 Ver más
