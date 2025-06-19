@@ -1,6 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogHeader,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -12,12 +18,67 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsTrigger, TabsList, TabsContent } from "@/components/ui/tabs";
 import { useCart } from "@/context/CartContext";
-import { Butcherman } from "next/font/google";
+import { Plus } from "lucide-react";
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+
+const MapaSelector = dynamic(() => import("@/components/MapaSelector"), {
+    ssr: false,
+});
 import LocationCards from "@/components/locationCard";
 
 const page = () => {
+    const [qrGenerado, setQrGenerado] = useState(false);
+    const [openUbicacion, setOpenUbicacion] = useState(false);
+    const [openSucursal, setOpenSucursal] = useState(false);
+    const qrUrl = "/qr.png";
     const { cart } = useCart();
+    const [selectedLat, setSelectedLat] = useState(-17.7833); // Coordenadas por defecto (La Paz)
+    const [selectedLng, setSelectedLng] = useState(-63.1821); // Coordenadas por defecto (Santa Cruz)
+    const [direccionGuardada, setDireccionGuardada] = useState<string | null>(
+        null
+    );
+    const [direcciones, setDirecciones] = useState([
+        {
+            id: 1,
+            name: "Direccion 1",
+            lat: -17.7833,
+            lng: -63.1821,
+            image: "/direccion1.png",
+        },
+    ]);
+    const [direccionLegible, setDireccionLegible] = useState<string>("");
+    const mapaRef = useRef<any>(null);
+    useEffect(() => {
+        const stored = localStorage.getItem("direcciones");
+        if (stored) {
+            setDirecciones(JSON.parse(stored));
+        }
+    }, []);
+    const onPay = () => {
+        const pedidos = localStorage.getItem("cart");
+        alert("Pedido realizado con exito");
+    };
+    // Función para obtener dirección legible desde lat/lng
+    const obtenerDireccion = async (lat: number, lng: number) => {
+        try {
+            const response = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`
+            );
+            const data = await response.json();
+            setDireccionLegible(data.address.road || "Dirección no encontrada");
+        } catch (error) {
+            setDireccionLegible("Error al obtener dirección");
+        }
+    };
+
+    useEffect(() => {
+        obtenerDireccion(selectedLat, selectedLng);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedLat, selectedLng]);
+
+
     return (
         <div className="flex flex-col py-10">
             <h1 className="text-2xl font-bold text-center pb-10">
@@ -32,12 +93,15 @@ const page = () => {
                                 key={item.id}
                                 className="flex items-center justify-between gap-2"
                             >
-                                <Image
-                                    src={item.image}
-                                    alt={item.name}
-                                    width={100}
-                                    height={100}
-                                />
+                                <div className="w-30 p-0 m-0">
+                                    <Image
+                                        className="h-20 object-contain"
+                                        src={item.image}
+                                        alt={item.name}
+                                        width={100}
+                                        height={100}
+                                    />
+                                </div>
                                 <div className="flex flex-col gap-2 w-full">
                                     <p className="text font-bold">
                                         {item.name}
@@ -76,7 +140,7 @@ const page = () => {
                 </TabsList>
                 <TabsContent
                     value="delivery"
-                    className="border-2 rounded-b-4xl rounded-r-4xl p-5"
+                    className="border-2 rounded-b-4xl rounded-r-4xl p-5 flex gap-2"
                 >
                     <LocationCards/>                    
                 </TabsContent>
@@ -148,7 +212,7 @@ const page = () => {
                             <Label>Nombre del Titular</Label>
                             <Input type="text" />
                         </div>
-                        <div className="flex gap-2 items-center justify-between">
+                        <div className="flex gap-2 items-center justify-between w-full">
                             <div className="flex flex-col gap-2">
                                 <Label>Codigo de Seguridad (CVC/CVV)</Label>
                                 <Input type="text" placeholder="123" />
@@ -162,14 +226,15 @@ const page = () => {
                             />
                         </div>
                     </div>
-                    <div className="w-full flex justify-center items-center">
-                        <Button variant={"secondary"}>Pagar</Button>
+                    <div className="w-4/5 flex justify-center items-center">
+                        <Button variant={"secondary"} onClick={onPay}>
+                            Pagar
+                        </Button>
                     </div>
                 </TabsContent>
-
                 <TabsContent
                     value="qr"
-                    className="border-2 rounded-b-4xl rounded-r-4xl p-5"
+                    className="border-2 rounded-b-4xl rounded-r-4xl p-6"
                 >
                     <div className="flex flex-col gap-2 items-center justify-center">
                         <p>
@@ -186,6 +251,7 @@ const page = () => {
                     </div>
                 </TabsContent>
             </Tabs>
+            
         </div>
     );
 };
