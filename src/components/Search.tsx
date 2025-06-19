@@ -7,61 +7,14 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
-
-// Datos de ejemplo para la wea
-const mockProducts = [
-  {
-    id: 1,
-    name: "Royal Canin Adult",
-    category: "Alimento Perros",
-    price: "Bs. 45.99",
-    image: "/placeholder.svg?height=40&width=40",
-    popular: true,
-  },
-  {
-    id: 2,
-    name: "Whiskas Adulto Atún",
-    category: "Alimento Gatos",
-    price: "Bs. 12.50",
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: 3,
-    name: "Kong Classic Rojo",
-    category: "Juguetes",
-    price: "Bs. 18.99",
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: 4,
-    name: "Collar Antipulgas Seresto",
-    category: "Accesorios",
-    price: "Bs. 65.00",
-    image: "/placeholder.svg?height=40&width=40",
-    popular: true,
-  },
-  {
-    id: 5,
-    name: "Arena Sanitaria Fresh Step",
-    category: "Higiene Gatos",
-    price: "Bs. 22.99",
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: 6,
-    name: "Snacks Dentales Pedigree",
-    category: "Snacks Perros",
-    price: "Bs. 8.75",
-    image: "/placeholder.svg?height=40&width=40",
-  },
-]
+import { products } from "@/constant/products"
 
 const recentSearches = ["Royal Canin", "Collar antipulgas", "Juguetes gatos"]
 const popularSearches = ["Alimento perros", "Arena gatos", "Snacks", "Correas"]
 
 const Search = () => {
   const [value, setValue] = useState("")
-  const [results, setResults] = useState<typeof mockProducts>([])
+  const [results, setResults] = useState<typeof products>([])
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
@@ -71,10 +24,9 @@ const Search = () => {
       setIsLoading(true)
       // Soy el Jhon y voy a simular el delay XD
       const timer = setTimeout(() => {
-        const filtered = mockProducts.filter(
+        const filtered = products.filter(
           (product) =>
-            product.name.toLowerCase().includes(value.toLowerCase()) ||
-            product.category.toLowerCase().includes(value.toLowerCase()),
+            product.name.toLowerCase().includes(value.toLowerCase()),
         )
         setResults(filtered)
         setIsLoading(false)
@@ -101,7 +53,7 @@ const Search = () => {
     }
   }, [])
 
-  const handleSelect = (selectedProduct: (typeof mockProducts)[0]) => {
+  const handleSelect = (selectedProduct: (typeof products)[0]) => {
     setValue(selectedProduct.name)
     setIsOpen(false)
     // Aquí se navega JR
@@ -218,17 +170,28 @@ const Search = () => {
                               height={40}
                               className="rounded-md object-cover"
                             />
-                            {product.popular && (
-                              <Badge className="absolute -top-1 -right-1 text-xs px-1 py-0 h-4">Popular</Badge>
-                            )}
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="font-medium text-sm truncate">{product.name}</p>
-                            <p className="text-xs text-muted-foreground">{product.category}</p>
+                            <p className="text-xs text-muted-foreground">{product.tags}</p>
                           </div>
                           <div className="text-right">
-                            <p className="font-semibold text-sm text-primary">{product.price}</p>
+                            {product.priceDiscount ? (
+                              <div className="flex justify-end items-center gap-2">
+                                <p className="text-sm text-gray-500 line-through">
+                                  Bs. {product.price}
+                                </p>
+                                <p className="font-bold text-base text-primary">
+                                  Bs. {product.priceDiscount}
+                                </p>
+                              </div>
+                            ) : (
+                              <p className="font-semibold text-sm text-primary">
+                                Bs. {product.price}
+                              </p>
+                            )}
                           </div>
+
                         </div>
                       </Link >
                     </CommandItem>
