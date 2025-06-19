@@ -24,12 +24,12 @@ const NavBar = () => {
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="relative">
-                        <Link href="/save-list" className="group">
+                        <Link href="/favoritos" className="group">
                             <div className="p-2 rounded-full hover:bg-primary/10 transition-colors duration-200 group-hover:scale-105 transform">
                                 <Heart className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors duration-200" />
                             </div>
                             <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium shadow-sm">
-                                3
+                                6
                             </span>
                         </Link>
                     </div>
