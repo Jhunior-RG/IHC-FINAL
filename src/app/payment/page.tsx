@@ -173,7 +173,7 @@ const page = () => {
                     </DialogContent>
                 </Dialog>
                 <Card className="mb-8 shadow-lg">
-                    <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5">
+                    <CardHeader className="bg-gradient-to-r">
                         <CardTitle className="flex items-center gap-2">
                             <CreditCard className="h-5 w-5" />
                             Resumen del Pedido
