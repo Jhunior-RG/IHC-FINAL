@@ -48,7 +48,7 @@ const CardProduct = ({ product }: { product: Product }) => {
                         </p>
                     )}
 
-                    <ButtonAddShoppingCart />
+                    <ButtonAddShoppingCart product={product} />
                 </Card>
             </Link>
         </>

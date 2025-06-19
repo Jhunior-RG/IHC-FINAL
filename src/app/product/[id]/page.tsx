@@ -79,7 +79,11 @@ const page = () => {
                                         Bs. {cantidad * product.price}
                                     </span>
                                 </p>
-                                <ButtonAddShoppingCart />
+
+                                <ButtonAddShoppingCart
+                                    product={product}
+                                    quantity={cantidad}
+                                />
                             </CardContent>
                         </Card>
                     </div>
