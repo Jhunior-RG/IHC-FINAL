@@ -11,6 +11,9 @@ export interface Product {
     price: number;
     priceDiscount?: number;
     image: string;
+    tags?: string[];
+    stock?: number;
+    description?: string;
 }
 const CardProduct = ({ product }: { product: Product }) => {
     return (
