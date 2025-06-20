@@ -8,6 +8,7 @@ import { Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import ButtonAddShoppingCart from "./ButtonAddShoppingCart";
 import { Check, X } from "lucide-react";
+import Link from "next/link";
 
 interface Product extends BaseProduct {
     razas?: string[];
@@ -62,6 +63,7 @@ const CardRecomended = ({ product, filterTags }: CardRecomendedProps) => {
         : [];
     return (
         <Card className="relative w-full">
+            <Link href={`/product/${product.id}`}>
             <CardContent className=" w-full flex">
                 <Image
                     src={product.image}
@@ -116,6 +118,7 @@ const CardRecomended = ({ product, filterTags }: CardRecomendedProps) => {
                     <ButtonAddShoppingCart product={product} />
                 </div>
             </CardContent>
+            </Link>
         </Card>
     );
 };
