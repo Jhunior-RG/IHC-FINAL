@@ -16,7 +16,7 @@ const DynamicBreadcrumb = () => {
     const generateBreadcrumbs = () => {
         const segments = pathname
             .split("/")
-            .filter((segment) => segment !== "");
+            .filter((segment) => segment !== "" && !/^\d+$/.test(segment));
 
         if (segments.length === 0) {
             return [{ href: "/", label: "Inicio", isCurrent: true }];
