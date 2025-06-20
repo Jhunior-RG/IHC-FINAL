@@ -13,19 +13,12 @@ import { useCart } from "@/context/CartContext"
 import { CreditCard, Smartphone, Shield, Lock, CheckCircle, AlertCircle, Truck } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
-import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
 import BranchesCards from "@/components/branchesCards"
 
-const MapaSelector = dynamic(() => import("@/components/MapaSelector"), {
-    ssr: false,
-})
 import LocationCards from "@/components/locationCard"
 
 const page = () => {
-    const [qrGenerado, setQrGenerado] = useState(false)
-    const [openUbicacion, setOpenUbicacion] = useState(false)
-    const [openSucursal, setOpenSucursal] = useState(false)
     const [cardNumber, setCardNumber] = useState("")
     const [cardName, setCardName] = useState("")
     const [cardCvc, setCardCvc] = useState("")
@@ -36,7 +29,6 @@ const page = () => {
     const [showSuccessModal, setShowSuccessModal] = useState(false)
     const [errors, setErrors] = useState<Record<string, string>>({})
 
-    const qrUrl = "/qr.png"
     const { cart } = useCart()
     const router = useRouter()
 
@@ -127,7 +119,7 @@ const page = () => {
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
     return (
-        <div className="flex flex-col py-10 bg-gray-50 min-h-screen">
+        <div className="flex flex-col py-10 min-h-screen">
             <div className="container mx-auto px-4 max-w-6xl">
                 <h1 className="text-3xl font-bold text-center pb-10 text-gray-900">Confirmar Pedido y Realizar Pago</h1>
 
