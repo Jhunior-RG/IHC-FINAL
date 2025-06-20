@@ -81,16 +81,16 @@ export const products: Product[] = [
         tags: ["Mascotas", "Alimentos", "Gatos", "Senior"],
         image: "/ZenCatSenior.png",
     },
-    {
-        id: 9,
-        name: "CatJoy Arena Sanitaria 5kg",
-        description: "Arena absorbente y sin aroma para gatos exigentes",
-        price: 60,
-        priceDiscount: 55,
-        stock: 200,
-        tags: ["Mascotas", "Aseo", "Gatos", "Arena"],
-        image: "/CatJoyArena.png",
-    },
+    /*    {
+            id: 9,
+            name: "CatJoy Arena Sanitaria 5kg",
+            description: "Arena absorbente y sin aroma para gatos exigentes",
+            price: 60,
+            priceDiscount: 55,
+            stock: 200,
+            tags: ["Mascotas", "Aseo", "Gatos", "Arena"],
+            image: "/CatJoyArena.png",
+        },*/
     {
         id: 11,
         name: "SnackyCat Mix 80g",
