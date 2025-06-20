@@ -14,7 +14,6 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "./ui/dialog";
 import { useState } from "react";
 
@@ -31,10 +30,6 @@ const ShoppingCart = () => {
         } else {
             addToCart(item, quantity);
         }
-    };
-
-    const handleRemoveItem = (itemId: number) => {
-        removeFromCart(itemId);
     };
 
     const handleConfirmRemoveItem = () => {
@@ -268,8 +263,8 @@ const ShoppingCart = () => {
                     <DialogHeader>
                         <DialogTitle>Eliminar Producto</DialogTitle>
                         <DialogDescription>
-                            ¿Estás seguro de que quieres eliminar "
-                            {itemToDelete?.name}" de tu carrito?
+                            ¿Estás seguro de que quieres eliminar &quot;
+                            {itemToDelete?.name}&quot; de tu carrito?
                         </DialogDescription>
                     </DialogHeader>
                     <DialogFooter>

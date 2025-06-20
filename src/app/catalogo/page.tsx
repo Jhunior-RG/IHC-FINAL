@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import type { Product } from "../../components/CardProductSinOferta";
 import CardProduct from "../../components/CardProductSinOferta";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -26,7 +25,7 @@ interface Filters {
     precioRange: number[];
 }
 
-const page = () => {
+const Page = () => {
     const [showFilters, setShowFilters] = useState(false);
     const [filters, setFilters] = useState<Filters>({
         tipoMascota: "",
@@ -100,7 +99,6 @@ const page = () => {
 
     return (
         <>
-
             <div className="flex items-center justify-between px-10 mt-5">
                 <h1 className="text-3xl font-semibold ml-10">Catálogo</h1>
                 <Button
@@ -494,4 +492,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

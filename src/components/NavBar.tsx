@@ -13,7 +13,6 @@ import {
     LogOut,
     ChevronDown,
     Menu,
-    Home,
 } from "lucide-react";
 import ShoppingCart from "./ShoppingCart";
 

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -20,7 +21,7 @@ export default function LocationCards() {
     const [openUbicacion, setOpenUbicacion] = useState(false);
     const [selectedLat, setSelectedLat] = useState(-17.7833);
     const [selectedLng, setSelectedLng] = useState(-63.1821);
-    const mapaRef = useRef<any>(null);
+    const mapaRef = useRef<{ current: unknown } | null>(null);
     const [direccionLegible, setDireccionLegible] = useState<string>("");
     const saveDirection = async () => {
         const nuevaDireccion = {
@@ -41,14 +42,13 @@ export default function LocationCards() {
             );
             const data = await response.json();
             setDireccionLegible(data.address.road || "Dirección no encontrada");
-        } catch (error) {
+        } catch {
             setDireccionLegible("Error al obtener dirección");
         }
     };
 
     useEffect(() => {
         obtenerDireccion(selectedLat, selectedLng);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedLat, selectedLng]);
 
     return (

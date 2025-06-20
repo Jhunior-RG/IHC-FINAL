@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import ButtonAddShoppingCart from "./ButtonAddShoppingCart";
-import { Button } from "./ui/button";
 import { Heart } from "lucide-react";
 import { Card } from "./ui/card";
 import Link from "next/link";

@@ -1,7 +1,6 @@
 "use client";
 import { ShoppingCart } from "lucide-react";
 import type React from "react";
-
 import { Button } from "./ui/button";
 import type { Product } from "./CardProduct";
 import { useCart } from "@/context/CartContext";

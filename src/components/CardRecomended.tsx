@@ -5,7 +5,6 @@ import type { Product as BaseProduct } from "./CardProduct";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Heart } from "lucide-react";
-import { Button } from "./ui/button";
 import ButtonAddShoppingCart from "./ButtonAddShoppingCart";
 import { Check, X } from "lucide-react";
 import Link from "next/link";
@@ -64,60 +63,64 @@ const CardRecomended = ({ product, filterTags }: CardRecomendedProps) => {
     return (
         <Card className="relative w-full">
             <Link href={`/product/${product.id}`}>
-            <CardContent className=" w-full flex">
-                <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={100}
-                    height={100}
-                />
-                <div className="flex flex-col gap-2 w-full">
-                    <h3>{product.name}</h3>
-                    <div className="flex gap-2 flex-wrap">
-                        {product.tags?.map((item) => (
-                            <Badge key={item}>{item}</Badge>
-                        ))}
-                    </div>
-                    <p>{product.description}</p>
-                    <p>{product.price}</p>
-                    {checks.length > 0 && (
-                        <div className="flex gap-2 flex-wrap mt-2">
-                            {checks
-                                .slice()
-                                .sort((a, b) =>
-                                    a.match === b.match ? 0 : a.match ? -1 : 1
-                                )
-                                .map((item) => (
-                                    <Badge
-                                        key={item.label}
-                                        className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium
+                <CardContent className=" w-full flex">
+                    <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={100}
+                        height={100}
+                    />
+                    <div className="flex flex-col gap-2 w-full">
+                        <h3>{product.name}</h3>
+                        <div className="flex gap-2 flex-wrap">
+                            {product.tags?.map((item) => (
+                                <Badge key={item}>{item}</Badge>
+                            ))}
+                        </div>
+                        <p>{product.description}</p>
+                        <p>{product.price}</p>
+                        {checks.length > 0 && (
+                            <div className="flex gap-2 flex-wrap mt-2">
+                                {checks
+                                    .slice()
+                                    .sort((a, b) =>
+                                        a.match === b.match
+                                            ? 0
+                                            : a.match
+                                            ? -1
+                                            : 1
+                                    )
+                                    .map((item) => (
+                                        <Badge
+                                            key={item.label}
+                                            className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium
                                             ${
                                                 item.match
                                                     ? "bg-neutral-800 text-white"
                                                     : "bg-neutral-100 border border-neutral-800 text-neutral-800"
                                             }
                                         `}
-                                    >
-                                        {item.match ? (
-                                            <Check className="mr-1" />
-                                        ) : (
-                                            <X className="mr-1" />
-                                        )}
-                                        {item.label}:{" "}
-                                        {item.value
-                                            ? item.value
-                                            : "No especificado"}
-                                    </Badge>
-                                ))}
-                        </div>
-                    )}
-                </div>
-                <Heart className="absolute top-2 right-2 hover:text-secondary hover:cursor-pointer" />
-                <div className="flex flex-col gap-2 justify-between">
-                    <div></div>
-                    <ButtonAddShoppingCart product={product} />
-                </div>
-            </CardContent>
+                                        >
+                                            {item.match ? (
+                                                <Check className="mr-1" />
+                                            ) : (
+                                                <X className="mr-1" />
+                                            )}
+                                            {item.label}:{" "}
+                                            {item.value
+                                                ? item.value
+                                                : "No especificado"}
+                                        </Badge>
+                                    ))}
+                            </div>
+                        )}
+                    </div>
+                    <Heart className="absolute top-2 right-2 hover:text-secondary hover:cursor-pointer" />
+                    <div className="flex flex-col gap-2 justify-between">
+                        <div></div>
+                        <ButtonAddShoppingCart product={product} />
+                    </div>
+                </CardContent>
             </Link>
         </Card>
     );

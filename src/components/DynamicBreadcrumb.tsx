@@ -12,7 +12,7 @@ import {
 
 const DynamicBreadcrumb = () => {
     const pathname = usePathname();
-
+    if (!pathname) return null;
     const generateBreadcrumbs = () => {
         const segments = pathname
             .split("/")

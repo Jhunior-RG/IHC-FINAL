@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Check } from "lucide-react";
+import { MapPin, Check } from "lucide-react";
 import { branches as initialLocations } from "@/constant/branches";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import dynamic from "next/dynamic";
@@ -20,7 +20,7 @@ export default function BranchesCards() {
     const [openUbicacion, setOpenUbicacion] = useState(false);
     const [selectedLat, setSelectedLat] = useState(-17.7833);
     const [selectedLng, setSelectedLng] = useState(-63.1821);
-    const mapaRef = useRef<any>(null);
+    const mapaRef = useRef<{ current: unknown } | null>(null);
     const [direccionLegible, setDireccionLegible] = useState<string>("");
     const saveDirection = async () => {
         const nuevaDireccion = {
@@ -41,7 +41,7 @@ export default function BranchesCards() {
             );
             const data = await response.json();
             setDireccionLegible(data.address.road || "Dirección no encontrada");
-        } catch (error) {
+        } catch {
             setDireccionLegible("Error al obtener dirección");
         }
     };
